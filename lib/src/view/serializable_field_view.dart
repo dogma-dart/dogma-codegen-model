@@ -8,8 +8,8 @@
 //---------------------------------------------------------------------
 
 import 'package:dogma_convert/serialize.dart';
+import 'package:dogma_codegen/view.dart';
 import 'package:dogma_source_analyzer/metadata.dart';
-import 'package:dogma_source_analyzer/view.dart';
 
 //---------------------------------------------------------------------
 // Library contents
