@@ -28,7 +28,8 @@ MetadataMatchFunction serializableFieldMatch = andList([
 ]);
 
 /// Matches [metadata] containing a [Serialize] annotation.
-bool serializeAnnotatedMatch(Metadata metadata) =>
-    (Metadata as AnnotatedMetadata)
-        .annotations
-        .any((annotation) => annotation is Serialize);
+bool serializeAnnotatedMatch(Metadata metadata) {
+  var annotations = (metadata as AnnotatedMetadata).annotations;
+
+  return annotations.any((value) => value is Serialize);
+}
