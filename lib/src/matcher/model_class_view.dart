@@ -18,6 +18,8 @@ import 'package:dogma_source_analyzer/matcher.dart';
 MetadataMatchFunction modelViewMatch = andList([
   // Models should be concrete
   concreteMatch,
+  // Models should not be generic
+  not(genericClassMatch),
   // Should not have any final fields
   not(classWithFinalFieldsMatch),
   // Should have an empty default constructor
@@ -25,13 +27,15 @@ MetadataMatchFunction modelViewMatch = andList([
 ]);
 
 /// Checks the class [metadata] for any final fields on the instance.
-bool classWithFinalFieldsMatch(Metadata metadata) =>
-    (metadata as ClassMetadata)
-        .fields
-        .any(and(not(staticMatch), finalFieldMatch));
+bool classWithFinalFieldsMatch(Metadata metadata) {
+  var fields = (metadata as ClassMetadata).fields;
+
+  return fields.any(and(not(staticMatch), finalFieldMatch));
+}
 
 /// Checks the class [metadata] for an empty default constructor.
-bool classWithEmptyDefaultConstructor(Metadata metadata) =>
-    (metadata as ClassMetadata)
-        .constructors
-        .any(and(defaultConstructorMatch, emptyParametersMatch));
+bool classWithEmptyDefaultConstructor(Metadata metadata) {
+  var constructors = (metadata as ClassMetadata).constructors;
+
+  return constructors.any(and(defaultConstructorMatch, emptyParametersMatch));
+}
