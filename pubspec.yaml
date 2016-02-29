@@ -7,9 +7,12 @@ environment:
   sdk: '>=1.14.0-any <2.0.0'
 dependencies:
   dogma_convert: ^0.0.1
+  dogma_codegen:
+    path: ../dogma-codegen
   dogma_source_analyzer:
     path: ../dogma-source-analyzer
   logging: ^0.11.1+1
+  meta: ^0.9.0
 dev_dependencies:
   test: ^0.12.3+9
 dependency_overrides:
