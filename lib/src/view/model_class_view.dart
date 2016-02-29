@@ -7,26 +7,26 @@
 // Imports
 //---------------------------------------------------------------------
 
+import 'package:dogma_codegen/view.dart';
 import 'package:dogma_source_analyzer/metadata.dart';
-import 'package:dogma_source_analyzer/view.dart';
 import 'package:dogma_source_analyzer/query.dart';
 
 import '../../matcher.dart';
 import 'serializable_field_view.dart';
+import 'serialization_mode.dart';
 
 //---------------------------------------------------------------------
 // Library contents
 //---------------------------------------------------------------------
 
 /// Provides a view over [ClassMetadata] for model data.
-class ModelClassView extends MetadataView<ClassMetadata> {
+class ModelClassView extends MetadataView<ClassMetadata>
+                        with SerializationMode {
   //---------------------------------------------------------------------
   // Member variables
   //---------------------------------------------------------------------
 
-  /// Whether the serialization is implicit.
-  ///
-  /// If no fields are annotated then the serialization will be implicit.
+  @override
   final bool isImplicit;
   /// The serializable fields on the model.
   final List<SerializableFieldView> serializableFields;
@@ -54,6 +54,7 @@ class ModelClassView extends MetadataView<ClassMetadata> {
     var isImplicit = annotatedFields.isEmpty;
     var fields = isImplicit ? serializableFields : annotatedFields;
 
+    // Create views over the fields
     var fieldViews = <SerializableFieldView>[];
 
     for (var field in fields) {
