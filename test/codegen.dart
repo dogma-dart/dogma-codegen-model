@@ -10,23 +10,13 @@
 //---------------------------------------------------------------------
 
 import 'package:test/test.dart';
-import 'package:logging/logging.dart';
 
-import 'codegen.dart' as codegen;
-import 'matcher.dart' as matcher;
+import 'src/codegen/serialize_annotation_test.dart' as serialize_annotation_test;
 
 //---------------------------------------------------------------------
 // Library contents
 //---------------------------------------------------------------------
 
 void main() {
-  // Start logging
-  Logger.root.level = Level.ALL;
-  Logger.root.onRecord.listen((LogRecord rec) {
-    print('${rec.level.name}: ${rec.time}: ${rec.message}');
-  });
-
-  // Run tests
-  group('Codegen tests', codegen.main);
-  group('Matcher tests', matcher.main);
+  group('Serialize annotation', serialize_annotation_test.main);
 }
