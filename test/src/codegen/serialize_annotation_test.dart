@@ -47,6 +47,8 @@ void main() {
     var buffer = new StringBuffer();
     generateFieldAnnotation(1, buffer);
     expect(buffer, isEmpty);
+    generateUsingAnnotation(2, buffer);
+    expect(buffer, isEmpty);
   });
   test('Only name', () {
     var annotation = _annotation(_name);
@@ -96,5 +98,12 @@ void main() {
 
     var annotation = buffer.toString().trimRight();
     expect(annotation, '@Serialize.function(\'$_name\',decode: \'$_decodeFunction\',encode: \'$_encodeFunction\')');
+  });
+  test('Using', () {
+    var buffer = new StringBuffer();
+    generateUsingAnnotation(Serialize.using, buffer);
+
+    var annotation = buffer.toString().trimRight();
+    expect(annotation, '@Serialize.using');
   });
 }
