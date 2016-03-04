@@ -8,4 +8,5 @@
 //---------------------------------------------------------------------
 
 export 'src/view/model_class_view.dart';
+export 'src/view/model_library_view.dart';
 export 'src/view/serializable_field_view.dart';
