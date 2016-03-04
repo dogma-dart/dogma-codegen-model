@@ -12,6 +12,7 @@
 import 'package:test/test.dart';
 import 'package:logging/logging.dart';
 
+import 'build.dart' as build;
 import 'codegen.dart' as codegen;
 import 'matcher.dart' as matcher;
 
@@ -27,6 +28,7 @@ void main() {
   });
 
   // Run tests
+  group('Build tests', build.main);
   group('Codegen tests', codegen.main);
   group('Matcher tests', matcher.main);
 }
