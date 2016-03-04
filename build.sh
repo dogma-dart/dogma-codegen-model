@@ -5,6 +5,7 @@ set -ex
 git clone https://github.com/dogma-dart/dogma-convert.git ../dogma-convert
 git clone https://github.com/dogma-dart/dogma-source-analyzer.git ../dogma-source-analyzer
 git clone https://github.com/dogma-dart/dogma-codegen.git ../dogma-codegen
+git clone https://github.com/dogma-dart/dogma-codegen-test.git ../dogma-codegen-test
 
 # Get version
 dart --version
