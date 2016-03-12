@@ -99,7 +99,6 @@ void main() {
     var annotation = buffer.toString().trimRight();
     expect(annotation, '@Serialize.function(\'$_name\',decode: \'$_decodeFunction\',encode: \'$_encodeFunction\')');
   });
-  /*
   test('Using', () {
     var buffer = new StringBuffer();
     generateUsingAnnotation(Serialize.using, buffer);
@@ -107,5 +106,4 @@ void main() {
     var annotation = buffer.toString().trimRight();
     expect(annotation, '@Serialize.using');
   });
-  */
 }

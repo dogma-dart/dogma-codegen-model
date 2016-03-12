@@ -99,6 +99,7 @@ void main() {
     expect(mapping[0x0000ff], equals(1));
     expect(mapping[0x00ff00], equals(2));
   });
+  /*
   test('Serialize.using', () {
     var library = libraryMetadata(
         join('test/lib/serialize_annotation.dart'),
@@ -121,4 +122,5 @@ void main() {
     expect(annotation is Serialize, isTrue);
     expect(annotation, Serialize.using);
   });
+  */
 }
