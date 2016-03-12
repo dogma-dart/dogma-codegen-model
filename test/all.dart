@@ -12,6 +12,7 @@
 import 'package:test/test.dart';
 import 'package:logging/logging.dart';
 
+import 'analyzer.dart' as analyzer;
 import 'build.dart' as build;
 import 'codegen.dart' as codegen;
 import 'matcher.dart' as matcher;
@@ -28,6 +29,7 @@ void main() {
   });
 
   // Run tests
+  group('Analyzer tests', analyzer.main);
   group('Build tests', build.main);
   group('Codegen tests', codegen.main);
   group('Matcher tests', matcher.main);
