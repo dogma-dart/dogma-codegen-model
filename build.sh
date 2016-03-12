@@ -1,9 +1,6 @@
 #!/bin/sh
 set -ex
 
-# Clone build
-git clone https://github.com/dart-lang/build.git ../build
-
 # Clone dogma libraries
 git clone https://github.com/dogma-dart/dogma-convert.git ../dogma-convert
 git clone https://github.com/dogma-dart/dogma-source-analyzer.git ../dogma-source-analyzer

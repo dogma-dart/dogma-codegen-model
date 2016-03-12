@@ -6,8 +6,7 @@ homepage: http://dogma-dart.github.io/
 environment:
   sdk: '>=1.14.0-any <2.0.0'
 dependencies:
-  build:
-    path: ../build
+  build: ^0.2.0
   dogma_convert:
     path: ../dogma-convert
   dogma_codegen:
