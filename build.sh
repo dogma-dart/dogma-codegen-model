@@ -14,6 +14,9 @@ dart --version
 # Install dependencies
 pub install
 
+# Verify that the libraries are error and warning-free.
+dartanalyzer ${DARTANALYZER_FLAGS} $(ls -rt lib/*.dart)
+
 # Run the tests
 pub global activate coverage
 OBSERVATORY_PORT=8000
@@ -33,8 +36,3 @@ pub global run coverage:format_coverage \
     --in ${COVERAGE_OUTPUT} \
     --out lcov.info \
     --lcov
-
-# Verify that the libraries are error and warning-free.
-#dartanalyzer ${DARTANALYZER_FLAGS} \
-#    lib/convert.dart \
-#    lib/serialize.dart
