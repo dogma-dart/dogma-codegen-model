@@ -57,7 +57,7 @@ class SerializableFieldView extends MetadataView<FieldMetadata> {
   /// The name to use when serializing.
   ///
   /// If the serialization name was specified on the annotation that will be
-  /// used; otherwise this will return the same value as [name].
+  /// used; otherwise this will return the same value as field's name.
   String get serializationName => _serializeAnnotation.name;
   /// The function to use when decoding.
   String get decodeUsing => _serializeAnnotation.decodeUsing;
