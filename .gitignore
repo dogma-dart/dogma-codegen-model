@@ -28,3 +28,6 @@ pubspec.lock
 
 # IntelliJ files
 .idea/
+
+# Outputted test files
+/test/lib/
