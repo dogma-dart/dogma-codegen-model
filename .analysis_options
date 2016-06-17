@@ -1,7 +1,7 @@
 analyzer:
   strong-mode: true
   exclude:
-    - test/libs/**/*
+    - test/lib/**
 linter:
   rules:
     - always_declare_return_types
