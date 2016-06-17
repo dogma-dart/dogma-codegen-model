@@ -17,6 +17,7 @@ import '../../view.dart';
 // Library contents
 //---------------------------------------------------------------------
 
+/// Creates a [ModelLibraryView] over library metadata.
 class ModelViewStep implements ViewStep {
   @override
   MetadataView<LibraryMetadata> view(LibraryMetadata metadata) =>

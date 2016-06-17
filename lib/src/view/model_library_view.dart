@@ -24,6 +24,7 @@ class ModelLibraryView extends MetadataView<LibraryMetadata> {
   // Member variables
   //---------------------------------------------------------------------
 
+  /// The models contained in the library.
   final List<ModelClassView> models;
 
   //---------------------------------------------------------------------
