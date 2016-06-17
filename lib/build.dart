@@ -9,3 +9,4 @@
 
 export 'src/build/model_codegen_step.dart';
 export 'src/build/model_view_step.dart';
+export 'src/build/predefined_model_builder.dart';
