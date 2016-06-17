@@ -12,6 +12,7 @@
 import 'package:test/test.dart';
 
 import 'src/build/model_view_step_test.dart' as model_view_step_test;
+import 'src/build/predefined_model_builder_test.dart' as predefined_model_builder_test;
 
 //---------------------------------------------------------------------
 // Library contents
@@ -19,4 +20,5 @@ import 'src/build/model_view_step_test.dart' as model_view_step_test;
 
 void main() {
   group('ModelViewStep', model_view_step_test.main);
+  group('PredefinedModelBuilder', predefined_model_builder_test.main);
 }
