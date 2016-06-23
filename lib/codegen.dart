@@ -8,4 +8,5 @@
 //---------------------------------------------------------------------
 
 export 'src/codegen/model_class_view.dart';
+export 'src/codegen/model_enum_view.dart';
 export 'src/codegen/serialize_annotation.dart';
