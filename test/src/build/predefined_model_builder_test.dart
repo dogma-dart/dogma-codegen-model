@@ -27,14 +27,20 @@ void main() {
       new PredefinedModelBuilder(modelConfig, model.modelImplicitLibrary()),
       new PredefinedModelBuilder(modelConfig, model.modelExplicitLibrary()),
       new PredefinedModelBuilder(modelConfig, model.modelOptionalLibrary()),
-      new PredefinedModelBuilder(modelConfig, model.modelRecursiveLibrary())
+      new PredefinedModelBuilder(modelConfig, model.modelRecursiveLibrary()),
+      new PredefinedModelBuilder(modelConfig, model.enumImplicitLibrary()),
+      new PredefinedModelBuilder(modelConfig, model.enumExplicitLibrary()),
+      new PredefinedModelBuilder(modelConfig, model.modelCompoundLibrary())
     ];
 
     var outputs = [
       model.modelImplicitLibrary(),
       model.modelExplicitLibrary(),
       model.modelOptionalLibrary(),
-      model.modelRecursiveLibrary()
+      model.modelRecursiveLibrary(),
+      model.enumImplicitLibrary(),
+      model.enumExplicitLibrary(),
+      model.modelCompoundLibrary()
     ];
 
     await testWithPredefinedMetadata(predefined, [], outputs);
