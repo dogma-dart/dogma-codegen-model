@@ -29,6 +29,10 @@ class ModelCodegenStep implements SourceGenerationStep {
       generateModel(model, buffer);
     }
 
+    for (var enumeration in modelLibraryView.enums) {
+      generateEnum(enumeration, buffer);
+    }
+
     return buffer.toString();
   }
 }
