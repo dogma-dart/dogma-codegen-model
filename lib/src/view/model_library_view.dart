@@ -8,10 +8,12 @@
 //---------------------------------------------------------------------
 
 import 'package:dogma_codegen/view.dart';
+import 'package:dogma_source_analyzer/matcher.dart';
 import 'package:dogma_source_analyzer/metadata.dart';
 import 'package:dogma_source_analyzer/query.dart';
 
 import '../../matcher.dart';
+import 'model_enum_view.dart';
 import 'model_class_view.dart';
 
 //---------------------------------------------------------------------
@@ -26,6 +28,8 @@ class ModelLibraryView extends MetadataView<LibraryMetadata> {
 
   /// The models contained in the library.
   final List<ModelClassView> models;
+  /// The enumerations contained in the library.
+  final List<ModelEnumView> enums;
 
   //---------------------------------------------------------------------
   // Constructors
@@ -39,10 +43,16 @@ class ModelLibraryView extends MetadataView<LibraryMetadata> {
         includeClasses: true
     ).map/*<ModelClassView>*/((clazz) => new ModelClassView(clazz)).toList();
 
-    return new ModelLibraryView._(metadata, models);
+    var enums = libraryMetadataQueryAll/*<EnumMetadata>*/(
+        metadata,
+        enumMetadataMatch,
+        includeClasses: true
+    ).map/*<ModelEnumView>*/((clazz) => new ModelEnumView(clazz)).toList();
+
+    return new ModelLibraryView._(metadata, models, enums);
   }
 
   /// Creates an instance of [ModelClassView] from the [metadata].
-  ModelLibraryView._(LibraryMetadata metadata, this.models)
+  ModelLibraryView._(LibraryMetadata metadata, this.models, this.enums)
       : super(metadata);
 }
