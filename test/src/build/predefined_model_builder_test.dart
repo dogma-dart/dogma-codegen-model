@@ -10,6 +10,7 @@
 import 'package:dogma_codegen/build.dart';
 import 'package:dogma_codegen_test/build.dart';
 import 'package:dogma_codegen_test/model.dart' as model;
+import 'package:dogma_source_analyzer/metadata.dart';
 import 'package:test/test.dart';
 
 import 'package:dogma_codegen_model/build.dart';
@@ -20,29 +21,32 @@ import 'package:dogma_codegen_model/build.dart';
 
 void main() {
   test('Model libraries', () async {
-    var modelConfig = new BuilderConfig<TargetConfig>()
-      ..libraryOutput = 'test/lib/src/model';
-
-    var predefined = [
-      new PredefinedModelBuilder(modelConfig, model.modelImplicitLibrary()),
-      new PredefinedModelBuilder(modelConfig, model.modelExplicitLibrary()),
-      new PredefinedModelBuilder(modelConfig, model.modelOptionalLibrary()),
-      new PredefinedModelBuilder(modelConfig, model.modelRecursiveLibrary()),
-      new PredefinedModelBuilder(modelConfig, model.enumImplicitLibrary()),
-      new PredefinedModelBuilder(modelConfig, model.enumExplicitLibrary()),
-      new PredefinedModelBuilder(modelConfig, model.modelCompoundLibrary())
-    ];
-
-    var outputs = [
+    var outputs = <LibraryMetadata>[
+      // Model types
       model.modelImplicitLibrary(),
       model.modelExplicitLibrary(),
       model.modelOptionalLibrary(),
       model.modelRecursiveLibrary(),
+      // Enum types
       model.enumImplicitLibrary(),
       model.enumExplicitLibrary(),
-      model.modelCompoundLibrary()
+      // Compound type
+      model.modelCompoundLibrary(),
+      // Inheritance
+      model.modelBaseLibrary(),
+      model.modelImplementBaseLibrary(),
+      model.modelExtendBaseLibrary(),
+      model.modelMixinLibrary()
     ];
 
-    await testWithPredefinedMetadata(predefined, [], outputs);
+    var modelConfig = new BuilderConfig<TargetConfig>()
+        ..libraryOutput = 'test/lib/src/model';
+    var builders = <PredefinedModelBuilder>[];
+
+    for (var library in outputs) {
+      builders.add(new PredefinedModelBuilder(modelConfig, library));
+    }
+
+    await testWithPredefinedMetadata(builders, [], outputs);
   });
 }
