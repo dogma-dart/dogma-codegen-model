@@ -9,6 +9,7 @@
 
 import 'package:dogma_convert/serialize.dart';
 import 'package:dogma_codegen/codegen.dart';
+import 'package:dogma_source_analyzer/metadata.dart';
 
 //---------------------------------------------------------------------
 // Library contents
@@ -86,14 +87,28 @@ void generateFieldAnnotation(dynamic annotation, StringBuffer buffer) {
 }
 
 /// Generates a serialize [annotation] for an enumeration into the [buffer].
-void generateValuesAnnotation(dynamic annotation, StringBuffer buffer) {
-  if (annotation is! Serialize) {
-    return;
+AnnotationGenerator generateValuesAnnotation(EnumMetadata metadata) {
+  var enumValues = <Field>[];
+
+  for (var enumeration in metadata.values) {
+    enumValues.add(new Field(enumeration));
   }
 
-  buffer.write('@Serialize.values(');
-  buffer.write(generateMap(annotation.mapping, false, true));
-  buffer.writeln(')');
+  return (annotation, buffer) {
+    if (annotation is! Serialize) {
+      return;
+    }
+
+    var mapped = {};
+
+    annotation.mapping.forEach((key, value) {
+      mapped[key] = enumValues[value];
+    });
+
+    buffer.write('@Serialize.values(');
+    buffer.write(generateMap(mapped, false, true));
+    buffer.writeln(')');
+  };
 }
 
 /// Generates a serialize [annotation] for a default function into the [buffer].

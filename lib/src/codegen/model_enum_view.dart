@@ -21,7 +21,7 @@ void generateEnum(ModelEnumView view, StringBuffer buffer) {
   var annotationGenerators = <AnnotationGenerator>[];
 
   if (view.isExplicit) {
-    annotationGenerators.add(generateValuesAnnotation);
+    annotationGenerators.add(generateValuesAnnotation(view.metadata));
   }
 
   generateEnumDefinition(
